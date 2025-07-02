@@ -59,7 +59,15 @@ st.title("🤖 RAG Based Streamlit Private Q&A App with LangChain and FAISS")
 
 # Hugging Face API token
 import os
-HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
+
+
+# ✅ Securely fetch the Hugging Face token
+HUGGINGFACE_TOKEN = st.secrets["HUGGINGFACE_TOKEN"]
+
+# Set Streamlit app title
+st.set_page_config(page_title="RAG Based Streamlit Private Q&A App with LangChain and FAISS")
+st.title("🤖 RAG Based Streamlit Private Q&A App with LangChain and FAISS")
+
 
 
 # Load Gemma client
