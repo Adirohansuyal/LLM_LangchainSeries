@@ -10,7 +10,7 @@
 
 # admin_vectorize.py
 
-from langchain.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
@@ -53,22 +53,12 @@ import streamlit as st
 from huggingface_hub import InferenceClient
 import pickle
 
-# Title
-st.set_page_config(page_title="RAG Based Streamlit Private Q&A App with LangChain and FAISS")
-st.title("🤖 RAG Based Streamlit Private Q&A App with LangChain and FAISS")
-
-# Hugging Face API token
-import os
-
-
 # ✅ Securely fetch the Hugging Face token
 HUGGINGFACE_TOKEN = st.secrets["HUGGINGFACE_TOKEN"]
 
 # Set Streamlit app title
 st.set_page_config(page_title="RAG Based Streamlit Private Q&A App with LangChain and FAISS")
 st.title("🤖 RAG Based Streamlit Private Q&A App with LangChain and FAISS")
-
-
 
 # Load Gemma client
 @st.cache_resource
@@ -98,7 +88,7 @@ if question:
         messages = [
             {
                 "role": "system",
-                "content": "You are a helpful assistant.You have to carefully search for user question's answer in your knowledge. Answer the user's question using ONLY the information provided in the context. Respond naturally and directly, as if you are sharing your knowledge, without explicitly referencing the text or context. Please ignore the Case of the questions asked by the user."
+                "content": "You are a helpful assistant. You have to carefully search for user question's answer in your knowledge. Answer the user's question using ONLY the information provided in the context. Respond naturally and directly, as if you are sharing your knowledge, without explicitly referencing the text or context. Please ignore the Case of the questions asked by the user."
             },
             {
                 "role": "user",
@@ -115,6 +105,3 @@ if question:
             for i, doc in enumerate(docs[:3]):
                 st.markdown(f"**Chunk {i+1}:**")
                 st.code(doc.page_content[:700])
-
-
-
