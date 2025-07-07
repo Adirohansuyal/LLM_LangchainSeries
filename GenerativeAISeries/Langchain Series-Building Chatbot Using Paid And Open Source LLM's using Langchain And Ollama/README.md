@@ -43,15 +43,3 @@ LangChain is a framework for building applications powered by language models. I
 
 ---
 
-## 🏗️ Step-by-Step Structure (for Both Methods)
-
-### 1. Environment Setup
-
-```python
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
